@@ -1,11 +1,10 @@
 """
 3D Engine
 
-Description: (Without Matrix Projection) OpenGL-like 3D Cube!
-(TECHSMART Compatible!)
+Description: (Without Matrix Projection) OpenGL-like 3D Cube!5
 """
 # Libraries
-import pygame,math,sys
+import pygame, math, sys
 pygame.init()
 
 # Functions
@@ -22,7 +21,7 @@ class Camera:
         self.pos = list(pos)
         self.rot = list(rot)
     
-    def events(self, event):
+    def Mouse_Controller(self, event):
         if event.type == pygame.MOUSEMOTION:
             x,y = event.rel
             x /= 200
@@ -31,18 +30,28 @@ class Camera:
             self.rot[0] += y
             self.rot[1] += x
     
+    def Rotate(self, dt, key):
+        s = dt * 3
+        
+        # Rotate
+        if key[pygame.K_RIGHT]: self.rot[1] += s
+        if key[pygame.K_LEFT]: self.rot[1] -= s
+        
+        if key[pygame.K_DOWN]: self.rot[0] += s
+        if key[pygame.K_UP]: self.rot[0] -= s
+        
     def Move(self, dt, key):
         s = dt * 5
         
         # Fly
-        if key[pygame.K_e]: self.pos[1] += s
-        if key[pygame.K_q]: self.pos[1] -= s
+        if key[pygame.K_q]: self.pos[1] -= s # Fly Up
+        if key[pygame.K_e]: self.pos[1] += s # Fly Down
         
         # Arrows
-        if key[pygame.K_w]: self.pos[2] += s
-        if key[pygame.K_s]: self.pos[2] -= s
-        if key[pygame.K_d]: self.pos[0] += s
-        if key[pygame.K_a]: self.pos[0] -= s
+        if key[pygame.K_w]: self.pos[2] += s # Forward
+        if key[pygame.K_s]: self.pos[2] -= s # Backward
+        if key[pygame.K_d]: self.pos[0] += s # Right
+        if key[pygame.K_a]: self.pos[0] -= s # Left
 
 # PyGame Variables
 w, h = 800, 600
@@ -54,18 +63,24 @@ BACKGROUND = (0,0,0)
 # Cursor Settings
 pygame.event.get()
 pygame.mouse.set_visible(0)
+#pygame.event.set_grab(1)
 
 # Camera
 cam = Camera((0, 0, -5))
 
 # Verts and Edges
-verts = (-1,-1,-1),(1,-1,-1),(1,1,-1),(-1,1,-1),(-1,-1,1),(1,-1,1),(1,1,1),(-1,1,1)
+Cube = (-1,-1,-1),(1,-1,-1),(1,1,-1),(-1,1,-1),(-1,-1,1),(1,-1,1),(1,1,1),(-1,1,1)
+Ramp = (-1,1,-1),(1,1,-1),(1,1,-1),(-1,1,-1),(-1,-1,1),(1,-1,1),(1,1,1),(-1,1,1)
+Sphere = ()
+
+verts = Cube
 edges = (0,1),(1,2),(2,3),(3,0),(4,5),(5,6),(6,7),(7,4),(0,4),(1,5),(2,6),(3,7)
 faces = (0,1,2,3),(4,5,6,7),(0,1,5,4),(2,3,7,6),(0,3,7,4),(1,2,6,5)
 colors = (255,0,0),(255,128,0),(255,255,0),(255,255,255),(0,0,255),(0,255,0)
 
 # Draw Loop
 while True:
+    key = pygame.key.get_pressed()
     fps = clock.tick(60)
     dt = fps / 1000
     
@@ -76,7 +91,8 @@ while True:
                 print(clock.get_fps())
                 sys.exit()
         
-        cam.events(e)
+        cam.Rotate(dt, key)
+        #cam.Mouse_Controller(e)
     
     screen.fill(BACKGROUND)
     
@@ -128,5 +144,5 @@ while True:
     pygame.display.flip()
     
     # Camera Controller
-    key = pygame.key.get_pressed()
+    cam.Rotate(dt, key)
     cam.Move(dt, key)
