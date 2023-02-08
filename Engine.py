@@ -1,5 +1,5 @@
 """
-Engine
+3D Engine
 
 Description: (Without Matrix Projection) OpenGL-like 3D Cube!
 (TECHSMART Compatible!)
@@ -66,12 +66,14 @@ colors = (255,0,0),(255,128,0),(255,255,0),(255,255,255),(0,0,255),(0,255,0)
 
 # Draw Loop
 while True:
-    dt = clock.tick() / 1000
+    fps = clock.tick(60)
+    dt = fps / 1000
     
     for e in pygame.event.get():
         
         if e.type == pygame.KEYDOWN:
             if e.key == pygame.K_ESCAPE:
+                print(clock.get_fps())
                 sys.exit()
         
         cam.events(e)
@@ -116,7 +118,7 @@ while True:
             face_color += [colors[f]]
             
             # Ordering Depth Layers
-            depth += [sum(sum(vert_list[j][i] for j in face)**2 for i in range(3))]
+            depth += [sum(sum(vert_list[j][i]/len(face) for j in face)**2 for i in range(3))]
     
     order = sorted(range(len(face_list)),key=lambda i:depth[i], reverse=1)
     
@@ -125,5 +127,6 @@ while True:
     
     pygame.display.flip()
     
+    # Camera Controller
     key = pygame.key.get_pressed()
     cam.Move(dt, key)
