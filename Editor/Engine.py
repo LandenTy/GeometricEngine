@@ -105,5 +105,6 @@ while(1):
     # Camera Controller
     cam.Rotate(dt, key)
     cam.Move(dt, key, False) # Normal Player Controller (No Fly Controls)
+    # If "cam.Move" is True, player can fly around the scene
     
     cam.Reset(key) # Resets Scene when key 'R' is pressed
