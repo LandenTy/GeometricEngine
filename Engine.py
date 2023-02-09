@@ -1,88 +1,44 @@
 """
-3D Engine
+Engine
 
-Description: (Without Matrix Projection) OpenGL-like 3D Cube!5
+Description: (Without Matrix Projection) OpenGL-like 3D Cube!
 """
+# Modules
+from Camera import * # Contains Camera Controller and Other Stuff
+from Primitives import * # Contains all 3D Shapes
+
 # Libraries
-import pygame, math, sys
+import pygame, sys
 pygame.init()
-
-# Functions
-def rotate2d(pos, rad): 
-    x,y = pos
-    s,c = math.sin(rad),math.cos(rad)
-    
-    return x * c - y * s, y * c + x * s
-
-# Classes
-class Camera:
-    
-    def __init__(self, pos=(0, 0, 0), rot=(0,0)):
-        self.pos = list(pos)
-        self.rot = list(rot)
-    
-    def Mouse_Controller(self, event):
-        if event.type == pygame.MOUSEMOTION:
-            x,y = event.rel
-            x /= 200
-            y /= 200
-            
-            self.rot[0] += y
-            self.rot[1] += x
-    
-    def Rotate(self, dt, key):
-        s = dt * 3
         
-        # Rotate
-        if key[pygame.K_RIGHT]: self.rot[1] += s
-        if key[pygame.K_LEFT]: self.rot[1] -= s
-        
-        if key[pygame.K_DOWN]: self.rot[0] += s
-        if key[pygame.K_UP]: self.rot[0] -= s
-        
-    def Move(self, dt, key):
-        s = dt * 5
-        
-        # Fly
-        if key[pygame.K_q]: self.pos[1] -= s # Fly Up
-        if key[pygame.K_e]: self.pos[1] += s # Fly Down
-        
-        # Arrows
-        if key[pygame.K_w]: self.pos[2] += s # Forward
-        if key[pygame.K_s]: self.pos[2] -= s # Backward
-        if key[pygame.K_d]: self.pos[0] += s # Right
-        if key[pygame.K_a]: self.pos[0] -= s # Left
-
 # PyGame Variables
-w, h = 800, 600
+w, h = 800, 800
 cx, cy = w // 2, h // 2
 screen = pygame.display.set_mode([w, h])
 clock = pygame.time.Clock()
-BACKGROUND = (0,0,0)
+
+skybox_path = "EmptySky.png" # Include Custom Skybox
+skybox = pygame.image.load(skybox_path)
+skybox = pygame.transform.scale(skybox,(w,h))
 
 # Cursor Settings
 pygame.event.get()
 pygame.mouse.set_visible(0)
-#pygame.event.set_grab(1)
+
+# Scene
+s0 = Scene()
+scene0 = s0.CreateScene((w,h))
 
 # Camera
-cam = Camera((0, 0, -5))
+cam = Camera((0, 0, -5)) # Player Controller
 
-# Verts and Edges
-Cube = (-1,-1,-1),(1,-1,-1),(1,1,-1),(-1,1,-1),(-1,-1,1),(1,-1,1),(1,1,1),(-1,1,1)
-Ramp = (-1,1,-1),(1,1,-1),(1,1,-1),(-1,1,-1),(-1,-1,1),(1,-1,1),(1,1,1),(-1,1,1)
-Sphere = ()
-
-verts = Cube
-edges = (0,1),(1,2),(2,3),(3,0),(4,5),(5,6),(6,7),(7,4),(0,4),(1,5),(2,6),(3,7)
-faces = (0,1,2,3),(4,5,6,7),(0,1,5,4),(2,3,7,6),(0,3,7,4),(1,2,6,5)
-colors = (255,0,0),(255,128,0),(255,255,0),(255,255,255),(0,0,255),(0,255,0)
+# Objects
+objects = [Quad((0,0,-.5)), Cube((-3, 0, 0))]
 
 # Draw Loop
-while True:
+while(1):
     key = pygame.key.get_pressed()
-    fps = clock.tick(60)
-    dt = fps / 1000
+    dt = clock.tick(30) / 1000
     
     for e in pygame.event.get():
         
@@ -90,59 +46,64 @@ while True:
             if e.key == pygame.K_ESCAPE:
                 print(clock.get_fps())
                 sys.exit()
-        
-        cam.Rotate(dt, key)
-        #cam.Mouse_Controller(e)
-    
-    screen.fill(BACKGROUND)
-    
-    vert_list = []
-    screen_coords = []
-    for x,y,z in verts:
-        
-        # Vertices
-        x -= cam.pos[0]
-        y -= cam.pos[1]
-        z -= cam.pos[2]
-            
-        x,z = rotate2d((x,z), cam.rot[1])
-        y,z = rotate2d((y,z), cam.rot[0])
-        vert_list += [(x,y,z)]
-        
-        # Screen Coordinates
-        f = 200 / z
-        x,y = x * f, y * f
-        screen_coords += [(cx + int(x), cy + int(y))]
+
+    scene0.blit(skybox,(0,0))
     
     face_list = []
     face_color = []
     depth = []
     
-    for f in range(len(faces)):
-        face = faces[f]
+    for obj in objects:
         
-        on_screen = False
-        for i in face:
-            if vert_list[i][2] > 0:
-                on_screen = True
-                break
-        
-        if on_screen:
-            # Coloring Faces
-            coords = [screen_coords[i] for i in face]
-            face_list += [coords]
-            face_color += [colors[f]]
+        vert_list = []
+        screen_coords = []
+        for x,y,z in obj.verts:
             
-            # Ordering Depth Layers
-            depth += [sum(sum(vert_list[j][i]/len(face) for j in face)**2 for i in range(3))]
+            # Vertices
+            x -= cam.pos[0]
+            y -= cam.pos[1]
+            z -= cam.pos[2]
+                
+            x,z = rotate2d((x,z), cam.rot[1])
+            y,z = rotate2d((y,z), cam.rot[0])
+            vert_list += [(x,y,z)]
+            
+            # Screen Coordinates
+            f = 200 / z
+            x,y = x * f, y * f
+            screen_coords += [(cx + int(x), cy + int(y))]
+        
+        for f in range(len(obj.faces)):
+            face = obj.faces[f]
+            
+            on_screen = False
+            for i in face:
+                
+                x,y = screen_coords[i]
+                if vert_list[i][2] > 0 and x > 0 and x < w and x and y > 0 and y < h:
+                    on_screen = True
+                    break
+            
+            if on_screen:
+                # Coloring Faces
+                coords = [screen_coords[i] for i in face]
+                face_list += [coords]
+                face_color += [obj.colors[f]]
+                
+                # Ordering Depth Layers
+                depth += [sum(sum(vert_list[j][i]/len(face) for j in face)**2 for i in range(3))]
     
     order = sorted(range(len(face_list)),key=lambda i:depth[i], reverse=1)
     
     for i in order:
-        pygame.draw.polygon(screen, face_color[i], face_list[i])
-    
+        try: pygame.draw.polygon(scene0, face_color[i], face_list[i])
+        except: pass
+        
     pygame.display.flip()
+    
     
     # Camera Controller
     cam.Rotate(dt, key)
-    cam.Move(dt, key)
+    cam.Move(dt, key, False) # Normal Player Controller (No Fly Controls)
+    
+    cam.Reset(key) # Resets Scene when key 'R' is pressed
