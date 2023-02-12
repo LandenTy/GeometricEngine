@@ -1,4 +1,4 @@
-________________________________________________________________________________________________________________
+```
             ________  _______   ________  _____ ______   _______  _________  ________  ___  ________     
            |\   ____\|\  ___ \ |\   __  \|\   _ \  _   \|\  ___ \|\___   ___\\   __  \|\  \|\   ____\    
            \ \  \___|\ \   __/|\ \  \|\  \ \  \\\__\ \  \ \   __/\|___ \  \_\ \  \|\  \ \  \ \  \___|    
@@ -16,8 +16,7 @@ ________________________________________________________________________________
                        \|_______|\|__| \|__|\|_______|\|__|\|__| \|__|\|_______|   ___        
                                                                                   |\__\       
                                                                                   \|__|       
-
-‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+```
 
 **Hello! Welcome to the Geometric Engine!**
 
@@ -47,8 +46,14 @@ Parameter Breakdown:
   
   key - _reference to `var_name = pygame.get_pressed()`_ ([Learn More](https://www.pygame.org/docs/ref/key.html#pygame.key.get_pressed))
   
-  flyCam - _Can the camera fly Up/Down?_ (E/Q - Up/Down)
+  flyCam - _(boolean) Do you want the player use fly controls?_
 __________________________________________
 **Chapter 1.2 : The Rotate Function**
 
 The `Rotate` function allows the player to rotate the Camera when pressing the Arrow Keys.
+
+This function takes in 3 Parameters:
+
+```
+def Rotate(self, dt, key):
+```
