@@ -18,6 +18,7 @@ ________________________________________________________________________________
                                                                                   \|__|       
 
 ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+
 **Hello! Welcome to the Geometric Engine!**
 
 _This Tutorial will help you get an insight on getting started with a project in the Geometric Engine!_
@@ -44,7 +45,7 @@ Parameter Breakdown:
 
   dt - _DeltaTime_ (A Timer that is called every frame to calculate the positions of objects in a scene)
   
-  key - _reference to `var_name = pygame.get_pressed()`_ ([Learn More]([url](https://www.pygame.org/docs/ref/key.html#pygame.key.get_pressed)))
+  key - _reference to `var_name = pygame.get_pressed()`_ ([Learn More](https://www.pygame.org/docs/ref/key.html#pygame.key.get_pressed))
   
   flyCam - _Can the camera fly Up/Down?_ (E/Q - Up/Down)
 __________________________________________
