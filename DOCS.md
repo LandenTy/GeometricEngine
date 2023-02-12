@@ -54,7 +54,7 @@ Parameter Breakdown:
   
   key - _reference to `var_name = pygame.get_pressed()`_ ([Learn More](https://www.pygame.org/docs/ref/key.html#pygame.key.get_pressed))
   
-  flyCam - _(boolean) Do you want the player use fly controls?_
+  flyCam - _(boolean) Enables/Disables cam fly controller_
 __________________________________________
 **Chapter 1.2 : The Rotate Function**
 
