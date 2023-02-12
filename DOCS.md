@@ -22,6 +22,14 @@
 
 _This Tutorial will help you get an insight on getting started with a project in the Geometric Engine!_
 
+**Chapter 0 : Base Vocabulary**
+
+Before we get started on learning how everything works, it's important you know what each individual thing is used for
+so you can increase your productivity throughout the Engine!
+
+       ~ Delta Time - A Timer that is called every frame to calculate the pos/rot/scale of objects in a scene
+       ~ Entities ~ Fancy way of saying an object
+
 **Chapter 1 : Camera Controller**
 
 The base camera controller comes with 4 (user-allowed) functions:
@@ -42,7 +50,7 @@ def Move(self, dt, key, flyCam=False):
 ```
 Parameter Breakdown:
 
-  dt - _DeltaTime_ (A Timer that is called every frame to calculate the positions of objects in a scene)
+  dt - _DeltaTime_
   
   key - _reference to `var_name = pygame.get_pressed()`_ ([Learn More](https://www.pygame.org/docs/ref/key.html#pygame.key.get_pressed))
   
