@@ -55,6 +55,15 @@ Parameter Breakdown:
   key - _reference to `var_name = pygame.get_pressed()`_ ([Learn More](https://www.pygame.org/docs/ref/key.html#pygame.key.get_pressed))
   
   flyCam - _(boolean) Enables/Disables cam fly controller_
+
+```
+while (1):
+    key = pygame.key.get_pressed()
+    dt = clock.tick(30) / 1000
+    
+    # Player Movement
+    cam.Move(dt, key, False)
+```
 __________________________________________
 **Chapter 1.2 : The Rotate Function**
 
@@ -64,4 +73,19 @@ This function takes in 3 Parameters:
 
 ```
 def Rotate(self, dt, key):
+```
+
+Parameter Breakdown:
+   
+   dt - _Delta Time_
+   
+   key - _reference to 'var_name = pygame.get_pressed()'_ ([Learn More](https://www.pygame.org/docs/ref/key.html#pygame.key.get_pressed))
+
+```
+while (1):
+    key = pygame.key.get_pressed()
+    dt = clock.tick(30) / 1000
+    
+    # Player Movement
+    cam.Rotate(dt, key, False)
 ```
