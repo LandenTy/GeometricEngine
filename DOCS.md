@@ -89,3 +89,25 @@ while (1):
     # Player Movement
     cam.Rotate(dt, key, False)
 ```
+__________________________________________
+**Chapter 1.3 : The Reset Function**
+
+The `Rotate` function allows the player to rotate the Camera when pressing the Arrow Keys.
+
+This function takes in 3 Parameters:
+
+```
+def Reset(self, key):
+```
+
+Parameter Breakdown:
+
+   key - _reference to `var_name = pygame.get_pressed()`_ ([Learn More](https://www.pygame.org/docs/ref/key.html#pygame.key.get_pressed))
+
+```
+while (1):
+    key = pygame.key.get_pressed()
+    
+    # Reset Player Controller
+    cam.Reset(key)
+```
