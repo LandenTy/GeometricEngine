@@ -111,3 +111,5 @@ while (1):
     # Reset Player Controller
     cam.Reset(key)
 ```
+__________________________________________
+**Chapter 2 : Scenes**
