@@ -79,7 +79,7 @@ Parameter Breakdown:
    
    dt - _Delta Time_
    
-   key - _reference to 'var_name = pygame.get_pressed()'_ ([Learn More](https://www.pygame.org/docs/ref/key.html#pygame.key.get_pressed))
+   key - _reference to `var_name = pygame.get_pressed()`_ ([Learn More](https://www.pygame.org/docs/ref/key.html#pygame.key.get_pressed))
 
 ```
 while (1):
