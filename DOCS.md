@@ -149,7 +149,7 @@ To import a 3D model:
     
     - Copy and Paste the Contents into the "Model_OBJ.txt" file in TechSmart
     
-    **If your model was made in Blender**
+   **If your model was made in Blender**
     
     - Go to the very top of the pasted "Model_OBJ.txt" file in TechSmart
     
