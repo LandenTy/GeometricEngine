@@ -113,3 +113,18 @@ while (1):
 ```
 __________________________________________
 **Chapter 2 : Scenes**
+
+Scenes, like in a play. Are a blank canvas, you can create new scenes by calling the `CreateScene` function within the Camera Class.
+
+```
+def CreateScene((w,h)):
+```
+
+Parameter Breakdown:
+       w - Scene Width
+       h - Scene Height
+
+Scenes are extremely useful for things like:
+    - Switching between menus
+    - Switching between levels
+    - etc
