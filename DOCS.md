@@ -126,5 +126,25 @@ Parameter Breakdown:
 
 Scenes are extremely useful for things like:
     - Switching between menus
+    
     - Switching between levels
+    
     - etc
+__________________________________________
+**Chapter 3 : 3D Models**
+
+The Geometric Engine can currently support simple primitave objects such as Quads or Cubes.
+But there are expirimental classes being worked on to allow users to import their own 3D Models.
+
+A good example of this would be the `Imported_OBJ` class in _'Primitives.py'_.
+To import a 3D model:
+    - Create a '.txt' file in the TechSmart Project Hierarchy
+    - Name it "Model_OBJ"
+    - Find the OBJ model of your choice, and change the format from ".obj" to ".txt"
+    - Drag the file, into a new chrome tab
+    - Copy and Paste the Contents into the "Model_OBJ.txt" file in TechSmart
+    
+    **If your model was made in Blender**
+    - Go to the very top of the pasted "Model_OBJ.txt" file in TechSmart
+    - Delete the "_# Blender v2.92.0 OBJ File: 'your_blend_file_here'_"
+    - You're now ready to import a 3D model!
