@@ -17,10 +17,6 @@ cx, cy = w // 2, h // 2
 screen = pygame.display.set_mode([w, h])
 clock = pygame.time.Clock()
 
-# Audio
-bgm = pygame.mixer.Sound("WaitingMusic.mp3")
-bgm.set_volume(1)
-
 # Scene
 s0 = Scene()
 scene0 = s0.CreateScene((w,h))
@@ -32,10 +28,6 @@ cam = Camera((0, 0, -5)) # Player Controller
 # Objects
 objects = [Cube((0,0,0))]
 
-def Play_Audio():
-    bgm.play(loops=-1)
-    
-Play_Audio()
 while(1):
     key = pygame.key.get_pressed()
     dt = clock.tick(30) / 1000
