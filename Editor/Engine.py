@@ -17,25 +17,25 @@ cx, cy = w // 2, h // 2
 screen = pygame.display.set_mode([w, h])
 clock = pygame.time.Clock()
 
-skybox_path = "EmptySky.png" # Include Custom Skybox
-skybox = pygame.image.load(skybox_path)
-skybox = pygame.transform.scale(skybox,(w,h))
-
-# Cursor Settings
-pygame.event.get()
-pygame.mouse.set_visible(0)
+# Audio
+bgm = pygame.mixer.Sound("WaitingMusic.mp3")
+bgm.set_volume(1)
 
 # Scene
 s0 = Scene()
 scene0 = s0.CreateScene((w,h))
+BACKGROUND_COLOR = (129, 236, 236)
 
 # Camera
 cam = Camera((0, 0, -5)) # Player Controller
 
 # Objects
-objects = [Quad((0,0,-.5)), Cube((-3, 0, 0))]
+objects = [Cube((0,0,0))]
 
-# Draw Loop
+def Play_Audio():
+    bgm.play(loops=-1)
+    
+Play_Audio()
 while(1):
     key = pygame.key.get_pressed()
     dt = clock.tick(30) / 1000
@@ -47,13 +47,13 @@ while(1):
                 print(clock.get_fps())
                 sys.exit()
 
-    scene0.blit(skybox,(0,0))
+    scene0.fill(BACKGROUND_COLOR)
     
     face_list = []
     face_color = []
     depth = []
     
-    for obj in objects:
+    for obj in objects: # Loads Objects from 'Objects' list
         
         vert_list = []
         screen_coords = []
@@ -68,7 +68,7 @@ while(1):
             y,z = rotate2d((y,z), cam.rot[0])
             vert_list += [(x,y,z)]
             
-            # Screen Coordinates
+            # Camera Settings 
             f = 200 / z
             x,y = x * f, y * f
             screen_coords += [(cx + int(x), cy + int(y))]
@@ -76,9 +76,8 @@ while(1):
         for f in range(len(obj.faces)):
             face = obj.faces[f]
             
-            on_screen = False
+            on_screen = True
             for i in face:
-                
                 x,y = screen_coords[i]
                 if vert_list[i][2] > 0 and x > 0 and x < w and x and y > 0 and y < h:
                     on_screen = True
@@ -93,18 +92,14 @@ while(1):
                 # Ordering Depth Layers
                 depth += [sum(sum(vert_list[j][i]/len(face) for j in face)**2 for i in range(3))]
     
-    order = sorted(range(len(face_list)),key=lambda i:depth[i], reverse=1)
+    order = sorted(range(len(face_list)),key=lambda i:depth[i],reverse=1)
     
     for i in order:
         try: pygame.draw.polygon(scene0, face_color[i], face_list[i])
         except: pass
-        
-    pygame.display.flip()
     
+    pygame.display.flip()
     
     # Camera Controller
     cam.Rotate(dt, key)
-    cam.Move(dt, key, False) # Normal Player Controller (No Fly Controls)
-    # If "cam.Move" is True, player can fly around the scene
-    
-    cam.Reset(key) # Resets Scene when key 'R' is pressed
+    cam.Move(dt, key)
