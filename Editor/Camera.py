@@ -4,6 +4,7 @@ Camera
 Description:
 """
 import pygame, math
+import pygame.freetype
 pygame.init()
 
 # Functions
@@ -19,6 +20,19 @@ class Camera:
     def __init__(self, pos=(0, 0, 0), rot=(0,0)):
         self.pos = list(pos)
         self.rot = list(rot)
+    
+    def GetMagnitude(self): # Gets Magnitude of Player Vector
+        v = [math.sqrt(self.rot[0]**2),
+             math.sqrt(self.rot[1]**2)]
+        return v
+    
+    def GetNormal(self,m): # Gets Normal of Player Vector
+        n = []
+        for i in range(len(m)):
+            try: n.append(self.rot[i] / m[i])
+            except: pass
+        
+        return n
     
     def Mouse_Controller(self, event):
         if event.type == pygame.MOUSEMOTION:
@@ -48,14 +62,10 @@ class Camera:
         if key[pygame.K_DOWN]: self.rot[0] += s
         if key[pygame.K_UP]: self.rot[0] -= s
         
-    def Move(self, dt, key, flyCam):
+    def Move(self, dt, key):
+        m = self.GetMagnitude()
+        n = self.GetNormal(m)
         s = dt * 3 # X Rotation
-        
-        if flyCam:
-            
-            # Fly
-            if key[pygame.K_q]: self.pos[1] -= s # Fly Up
-            if key[pygame.K_e]: self.pos[1] += s # Fly Down
         
         # Arrows
         if key[pygame.K_w]: self.pos[2] += s # Forward
@@ -66,9 +76,18 @@ class Camera:
     def CheckDrawFaces():
         
         return
-
+    
 class Scene:
         
     def CreateScene(sceneList, (w,h)):
         scene = pygame.display.set_mode([w,h])
         return scene
+
+def DrawText(scene,text,(x,y),font,size,color):
+    font = pygame.freetype.Font(font) 
+    text = text
+    font.size = size
+    font.fgcolor = color
+    
+    text_rect = font.get_rect(text)
+    font.render_to(scene, (x,y), text)
