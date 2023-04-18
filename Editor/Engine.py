@@ -8,11 +8,11 @@ from Camera import * # Contains Camera Controller and Other Stuff
 from Primitives import * # Contains all 3D Shapes
 
 # Libraries
-import pygame, sys
+import pygame,random,sys
 pygame.init()
         
 # PyGame Variables
-w, h = 800, 800
+w, h = 1240, 720
 cx, cy = w // 2, h // 2
 screen = pygame.display.set_mode([w, h])
 clock = pygame.time.Clock()
@@ -23,14 +23,14 @@ scene0 = s0.CreateScene((w,h))
 BACKGROUND_COLOR = (129, 236, 236)
 
 # Camera
-cam = Camera((0, 0, -5)) # Player Controller
+cam = Camera((0, -3, -15)) # Player Controller
 
 # Objects
-objects = [Cube((0,0,0))]
+objects = [Ground_OBJ((0,0,0)), Cube((3,0,0)), Cube((3,3,0))]
 
 while(1):
     key = pygame.key.get_pressed()
-    dt = clock.tick(30) / 1000
+    dt = clock.tick(20) / 1000
     
     for e in pygame.event.get():
         
@@ -38,7 +38,7 @@ while(1):
             if e.key == pygame.K_ESCAPE:
                 print(clock.get_fps())
                 sys.exit()
-
+            
     scene0.fill(BACKGROUND_COLOR)
     
     face_list = []
@@ -87,11 +87,10 @@ while(1):
     order = sorted(range(len(face_list)),key=lambda i:depth[i],reverse=1)
     
     for i in order:
-        try: pygame.draw.polygon(scene0, face_color[i], face_list[i])
+        try: pygame.draw.polygon(scene0, face_color[i], face_list[i],width=0)
         except: pass
     
     pygame.display.flip()
     
-    # Camera Controller
-    cam.Rotate(dt, key)
-    cam.Move(dt, key)
+    cam.Rotate(dt,key)
+    cam.Move(dt,key)
