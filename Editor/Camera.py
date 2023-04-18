@@ -4,7 +4,6 @@ Camera
 Description:
 """
 import pygame, math
-import pygame.freetype
 pygame.init()
 
 # Functions
@@ -21,19 +20,6 @@ class Camera:
         self.pos = list(pos)
         self.rot = list(rot)
     
-    def GetMagnitude(self): # Gets Magnitude of Player Vector
-        v = [math.sqrt(self.rot[0]**2),
-             math.sqrt(self.rot[1]**2)]
-        return v
-    
-    def GetNormal(self,m): # Gets Normal of Player Vector
-        n = []
-        for i in range(len(m)):
-            try: n.append(self.rot[i] / m[i])
-            except: pass
-        
-        return n
-    
     def Mouse_Controller(self, event):
         if event.type == pygame.MOUSEMOTION:
             x,y = event.rel
@@ -42,15 +28,6 @@ class Camera:
             
             self.rot[0] += y
             self.rot[1] += x
-    
-    def Reset(self, key):
-        if key[pygame.K_r]: 
-            self.pos[0] = 0 
-            self.pos[1] = 0 
-            self.pos[2] = -5
-            
-            self.rot[1] = 0
-            self.rot[0] = 0
  
     def Rotate(self, dt, key):
         s = dt * 1.5
@@ -63,9 +40,11 @@ class Camera:
         if key[pygame.K_UP]: self.rot[0] -= s
         
     def Move(self, dt, key):
-        m = self.GetMagnitude()
-        n = self.GetNormal(m)
         s = dt * 3 # X Rotation
+        
+        # Flying
+        if key[pygame.K_e]: self.pos[1] += s
+        if key[pygame.K_q]: self.pos[1] -= s
         
         # Arrows
         if key[pygame.K_w]: self.pos[2] += s # Forward
@@ -74,20 +53,10 @@ class Camera:
         if key[pygame.K_a]: self.pos[0] -= s # Left
     
     def CheckDrawFaces():
-        
-        return
+        pass
     
 class Scene:
         
     def CreateScene(sceneList, (w,h)):
         scene = pygame.display.set_mode([w,h])
         return scene
-
-def DrawText(scene,text,(x,y),font,size,color):
-    font = pygame.freetype.Font(font) 
-    text = text
-    font.size = size
-    font.fgcolor = color
-    
-    text_rect = font.get_rect(text)
-    font.render_to(scene, (x,y), text)
