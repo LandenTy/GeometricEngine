@@ -46,14 +46,25 @@ class Camera:
         if key[pygame.K_e]: self.pos[1] += s
         if key[pygame.K_q]: self.pos[1] -= s
         
+        # Normalize Rotation
+        x,y = s * math.sin(self.rot[1]), s * math.cos(self.rot[1])
+        
         # Arrows
-        if key[pygame.K_w]: self.pos[2] += s # Forward
-        if key[pygame.K_s]: self.pos[2] -= s # Backward
-        if key[pygame.K_d]: self.pos[0] += s # Right
-        if key[pygame.K_a]: self.pos[0] -= s # Left
-    
-    def CheckDrawFaces():
-        pass
+        if key[pygame.K_w]: # Forward
+            self.pos[0] += x
+            self.pos[2] += y
+        
+        if key[pygame.K_s]: # Backward
+            self.pos[0] -= x
+            self.pos[2] -= y
+            
+        if key[pygame.K_a]: # Strafe Left
+            self.pos[0] -= y
+            self.pos[2] += x
+            
+        if key[pygame.K_d]: # Strafe Right
+            self.pos[0] += y
+            self.pos[2] -= x
     
 class Scene:
         
