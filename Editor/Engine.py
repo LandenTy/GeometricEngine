@@ -23,10 +23,10 @@ scene0 = s0.CreateScene((w,h))
 BACKGROUND_COLOR = (129, 236, 236)
 
 # Camera
-cam = Camera((0, -3, -15)) # Player Controller
+cam = Camera((0, 0, -5)) # Player Controller
 
 # Objects
-objects = [Ground_OBJ((0,0,0)), Cube((3,0,0)), Cube((3,3,0))]
+objects = [Cube((0,0,0))]
 
 while(1):
     key = pygame.key.get_pressed()
@@ -90,6 +90,7 @@ while(1):
         try: pygame.draw.polygon(scene0, face_color[i], face_list[i],width=0)
         except: pass
     
+    pygame.draw.circle(scene0,(255,255,255),(w/2,h/2),5)
     pygame.display.flip()
     
     cam.Rotate(dt,key)
