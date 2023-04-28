@@ -16,6 +16,17 @@
                                                                                                                              
 -~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
 
+Chaper 0: Prerequisites
+
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+Prerequisites Include:
+    - Model MUST be LESS than 100 tris
+    - Model Cannot be MORE than 400 lines of data
+    - Format MUST be exported as OBJ. If you use a file converter, (Ex. FBX -> OBJ or GLTF -> OBJ) the Engine will give a "Division by Zero Exception".
+
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
 Chaper 1: Getting the OBJ Data
 
 -~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
@@ -55,8 +66,22 @@ Chapter 2: Setting up the Importer
     - MAT_LIST: This is the list of all materials that will be used during object texturing. You can define Materials calling the 'Material' function from
     the Engine class.
 
+5. Run 'demo.py' and copy the contents of 'SaveData.txt'
+
 -~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
 
 Chapter 3: Using the OBJ in the Engine
 
 -~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+1. After opening the Engine, open 'Primitaves.py'
+
+2. Paste the 'My_OBJ' class underneath the "Custom Models" header
+
+3. Open 'Engine.py' and add My_OBJ to the objects list, passing in the positional arguments:
+
+    objects = [Cube((0,0,0)),My_OBJ((2,0,0))]
+  
+4. Run 'Engine.py' and voila! You have officially imported a textured OBJ!
+
+Side Note: As of 04-28-23, the Engine can only run models at 400 lines max. (Running at a swift 4.03 FPS)
