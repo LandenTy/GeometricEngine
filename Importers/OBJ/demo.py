@@ -15,7 +15,9 @@ OBJ_FILE = "Cube.txt"
 SAVE_FILE = "SavaData.txt"
 MAT_LIST = [c1,c2]
 
+OBJECT_NAME = "Cube_OBJ"
+
 # Functions
 obj_unpacker = Unpack_Obj()
 obj_unpacker.unpack_obj_from_file(OBJ_FILE)
-Save_Data(SAVE_FILE,obj_unpacker,MAT_LIST)
+Save_Data(SAVE_FILE,obj_unpacker,OBJECT_NAME,MAT_LIST)
