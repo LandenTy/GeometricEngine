@@ -3,4 +3,4 @@ After many months of research, I've finally completed my 3D Engine! I'm now able
 
 Controls: WASD - Move Camera | Q - Fly Up | E - Fly Down | Mouse Cursor - Look Around | R - Reset Scene | Escape - End Demo
 
-![Cube OBJ](Cube.png)
+![Cube OBJ](Images/Cube.png)
