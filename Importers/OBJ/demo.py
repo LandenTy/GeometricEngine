@@ -7,15 +7,13 @@ Description:
 from Engine import *
 
 # MATERIALS
-c1 = Material((0,0,0))
-c2 = Material((255,0,255))
+c1 = Material((0,124,124))
 
 # USERDEF
-OBJ_FILE = "Cube.txt"
-SAVE_FILE = "SavaData.txt"
-MAT_LIST = [c1,c2]
-
-OBJECT_NAME = "Cube_OBJ"
+OBJ_FILE = ""
+SAVE_FILE = ""
+MAT_LIST = [c1]
+OBJECT_NAME = ""
 
 # Functions
 obj_unpacker = Unpack_Obj()
