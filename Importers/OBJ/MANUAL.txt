@@ -1,20 +1,62 @@
- ________  _______   ________  _____ ______   _______  _________  ________  ___  ________     
-|\   ____\|\  ___ \ |\   __  \|\   _ \  _   \|\  ___ \|\___   ___\\   __  \|\  \|\   ____\    
-\ \  \___|\ \   __/|\ \  \|\  \ \  \\\__\ \  \ \   __/\|___ \  \_\ \  \|\  \ \  \ \  \___|    
- \ \  \  __\ \  \_|/_\ \  \\\  \ \  \\|__| \  \ \  \_|/__  \ \  \ \ \   _  _\ \  \ \  \       
-  \ \  \|\  \ \  \_|\ \ \  \\\  \ \  \    \ \  \ \  \_|\ \  \ \  \ \ \  \\  \\ \  \ \  \____  
-   \ \_______\ \_______\ \_______\ \__\    \ \__\ \_______\  \ \__\ \ \__\\ _\\ \__\ \_______\
-    \|_______|\|_______|\|_______|\|__|     \|__|\|_______|   \|__|  \|__|\|__|\|__|\|_______|
-                                                                                              
-                                                                                              
-                                                                                              
-                       _______   ________   ________  ___  ________   _______                 
-                      |\  ___ \ |\   ___  \|\   ____\|\  \|\   ___  \|\  ___ \                
-                      \ \   __/|\ \  \\ \  \ \  \___|\ \  \ \  \\ \  \ \   __/|               
-                       \ \  \_|/_\ \  \\ \  \ \  \  __\ \  \ \  \\ \  \ \  \_|/__             
-                        \ \  \_|\ \ \  \\ \  \ \  \|\  \ \  \ \  \\ \  \ \  \_|\ \            
-                         \ \_______\ \__\\ \__\ \_______\ \__\ \__\\ \__\ \_______\           
-                          \|_______|\|__| \|__|\|_______|\|__|\|__| \|__|\|_______|           
-                                                                                              
-                                                                                              
-                                                                                              
+ ________      _______       ________      _____ ______       _______       _________    ________      ___      ________     
+|\   ____\    |\  ___ \     |\   __  \    |\   _ \  _   \    |\  ___ \     |\___   ___\ |\   __  \    |\  \    |\   ____\    
+\ \  \___|    \ \   __/|    \ \  \|\  \   \ \  \\\__\ \  \   \ \   __/|    \|___ \  \_| \ \  \|\  \   \ \  \   \ \  \___|    
+ \ \  \  ___   \ \  \_|/__   \ \  \\\  \   \ \  \\|__| \  \   \ \  \_|/__       \ \  \   \ \   _  _\   \ \  \   \ \  \       
+  \ \  \|\  \   \ \  \_|\ \   \ \  \\\  \   \ \  \    \ \  \   \ \  \_|\ \       \ \  \   \ \  \\  \|   \ \  \   \ \  \____  
+   \ \_______\   \ \_______\   \ \_______\   \ \__\    \ \__\   \ \_______\       \ \__\   \ \__\\ _\    \ \__\   \ \_______\
+    \|_______|    \|_______|    \|_______|    \|__|     \|__|    \|_______|        \|__|    \|__|\|__|    \|__|    \|_______|
+                     _______       ________       ________      ___      ________       _______                              
+                    |\  ___ \     |\   ___  \    |\   ____\    |\  \    |\   ___  \    |\  ___ \                             
+                    \ \   __/|    \ \  \\ \  \   \ \  \___|    \ \  \   \ \  \\ \  \   \ \   __/|                            
+                     \ \  \_|/__   \ \  \\ \  \   \ \  \  ___   \ \  \   \ \  \\ \  \   \ \  \_|/__                          
+                      \ \  \_|\ \   \ \  \\ \  \   \ \  \|\  \   \ \  \   \ \  \\ \  \   \ \  \_|\ \                         
+                       \ \_______\   \ \__\\ \__\   \ \_______\   \ \__\   \ \__\\ \__\   \ \_______\                        
+                        \|_______|    \|__| \|__|    \|_______|    \|__|    \|__| \|__|    \|_______|                        
+                                                                                                                             
+                                                                                                                             
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+Chaper 1: Getting the OBJ Data
+
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+1. Find or Download your OBJ File. I'll be using a simple Cube OBJ that can be found at: 
+
+   - https://gist.github.com/MaikKlein/0b6d6bb58772c13593d0a0add6004c1c
+   
+2. Once you've found your OBJ File, you'll need to change the extension from '.obj' to '.txt'.
+This allows you to view the File Contents inside Google Chrome
+
+3. Drag and Drop the "OBJ" text file in an empty tab, and press Enter.
+This allows you to see the Raw Contents of the object file.
+
+4. Once there press "CTRL + A" to select all, followed by "CTRL + C"
+
+5. In TechSmart, create a text file named "My_OBJ"
+
+6. Copy the contents of the 'OBJ.txt' into the 'My_OBJ.txt' file in TechSmart
+
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+Chapter 2: Setting up the Importer
+
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+1. Navigate to "Importers/OBJ" directory in the GitHub repo
+
+2. Copy and Paste the file contents of both OBJ_Engine.py, and demo.py into their own files respectively
+
+3. Next, open the 'demo.py' script. We need to define some custom variables.
+
+4. Underneath the "USERDEF" header, let's take a look at what each parameter does...
+    - OBJECT_NAME: This is what you'll want to call the Object as in the Engine. We'll set it to "My_OBJ_File".
+    - OBJ_FILE: This is what OBJ File the program is looking to transcribe into subdata. We'll set it to "My_OBJ.txt" for now.
+    - SAVE_FILE: This is where your object code will be saved into. You'll need to create a new "SaveData.txt" file, and set SAVE_FILE to that "SaveData.txt"
+    - MAT_LIST: This is the list of all materials that will be used during object texturing. You can define Materials calling the 'Material' function from
+    the Engine class.
+
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
+
+Chapter 3: Using the OBJ in the Engine
+
+-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~-~
