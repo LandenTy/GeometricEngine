@@ -10,10 +10,10 @@ from Engine import *
 c1 = Material((0,124,124))
 
 # USERDEF
+OBJECT_NAME = ""
 OBJ_FILE = ""
 SAVE_FILE = ""
 MAT_LIST = [c1]
-OBJECT_NAME = ""
 
 # Functions
 obj_unpacker = Unpack_Obj()
