@@ -29,27 +29,40 @@ class Material:
     def color(self):
         return self.mat
 
-def Save_Data(filename, obj, mats):
+def Save_Data(filename,obj,obj_name,mats):
     c = 0
+    vertex = "    vertices = "
+    face = "    faces = "
+    color = "    colors = "
+
     with open(filename, 'w') as f:
+        
+        # Setting up class
+        f.write("class " + obj_name + ":\n")
+        
         for i in range(len(obj.vertex)): # Writing Vertices
-            f.write(str(tuple(obj.vertex[i])))
-            f.write(",")
+            vertex += str(tuple(obj.vertex[i])) + ","
         
-        f.write("\n\n")
+        f.write(vertex + "\n")
         for j in range(len(obj.faces)): # Writing Faces
-            f.write(str(tuple(obj.faces[j])))
-            f.write(",")
+            face += str(tuple(obj.faces[j])) + ","
         
-        f.write("\n\n")
-        for k in range(len(obj.faces)):
-            f.write(str(mats[c].color()))
-            f.write(",")
+        f.write(face + "\n")
+        for k in range(len(obj.faces)): # Writing Colors
+            color += str(mats[c].color()) + ","
             
             if c < len(mats) - 1:
                 c += 1
             else:
                 c = 0
+        
+        f.write(color + "\n\n")
+        f.write("   def Translate(self,pos=(0,0,0)):\n")
+        f.write("       x,y,z = pos\n")
+        f.write("       self.verts = [(x + X/2,y + Y/2,z + Z/2) for X,Y,Z in self.vertices]\n\n")
+        f.write("   def __init__(self,pos=(0,0,0)):\n")
+        f.write("       x,y,z = pos\n")
+        f.write("       self.Translate((x,y,z))")
         
         print("Finished!")
         print("You may now close the window...")
