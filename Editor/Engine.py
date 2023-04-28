@@ -28,9 +28,10 @@ cam = Camera((0, 0, -5)) # Player Controller
 # Objects
 objects = [Cube((0,0,0))]
 
+# Game Loop
 while(1):
     key = pygame.key.get_pressed()
-    dt = clock.tick(20) / 1000
+    dt = clock.tick(30) / 1000
     
     for e in pygame.event.get():
         
@@ -38,7 +39,7 @@ while(1):
             if e.key == pygame.K_ESCAPE:
                 print(clock.get_fps())
                 sys.exit()
-            
+        
     scene0.fill(BACKGROUND_COLOR)
     
     face_list = []
@@ -68,23 +69,28 @@ while(1):
         for f in range(len(obj.faces)):
             face = obj.faces[f]
             
-            on_screen = True
+            on_screen = False
             for i in face:
                 x,y = screen_coords[i]
-                if vert_list[i][2] > 0 and x > 0 and x < w and x and y > 0 and y < h:
+                if vert_list[i][2] > 0 and x > 0 and x < w and y > 1 and y < h:
                     on_screen = True
                     break
             
             if on_screen:
-                # Coloring Faces
+                # Storing Color Data
                 coords = [screen_coords[i] for i in face]
                 face_list += [coords]
                 face_color += [obj.colors[f]]
                 
-                # Ordering Depth Layers
+                # Coloring Faces
                 depth += [sum(sum(vert_list[j][i]/len(face) for j in face)**2 for i in range(3))]
-    
-    order = sorted(range(len(face_list)),key=lambda i:depth[i],reverse=1)
+        
+        # Ordering Face Layers
+        order = sorted(range(len(face_list)),key=lambda i:depth[i],reverse=1)
+        
+        # Only drawing the Faces visible to Camera
+        try: order.pop(0); order.pop(1)
+        except: pass
     
     for i in order:
         try: pygame.draw.polygon(scene0, face_color[i], face_list[i],width=0)
