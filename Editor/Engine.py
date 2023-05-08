@@ -26,12 +26,45 @@ BACKGROUND_COLOR = (129, 236, 236)
 cam = Camera((0, 0, -5)) # Player Controller
 
 # Objects
-objects = [Cube((0,0,0))]
+objects = [Cube()]
+
+# UI Vars
+healthFill = 390
+staminaFill = 390
+
+# GUI Loop
+def Draw_GUI():
+    global staminaFill,healthFill
+    
+    # Health Bar
+    pygame.draw.rect(scene0,(0,0,0),pygame.Rect(25,25,400,50))
+    pygame.draw.rect(scene0,(0,255,0),pygame.Rect(30,30,healthFill,40))
+    
+    # Running
+    if pygame.key.get_mods() == 2:
+        
+        # Update UI
+        pygame.draw.rect(scene0,(0,0,0),pygame.Rect(25,h - 75,400,50))
+        pygame.draw.rect(scene0,(255,255,255),pygame.Rect(30,h-70,staminaFill,40))
+        
+        # Update Stamina Fill Amount
+        if staminaFill > 0 and cam.moving: staminaFill -= 5
+        
+        # Running vs Walking
+        if staminaFill == 0: cam.speed = 1
+        else: cam.speed = 2
+    
+    else:
+        if staminaFill < 390:
+            pygame.draw.rect(scene0,(0,0,0),pygame.Rect(25,h - 75,400,50))
+            pygame.draw.rect(scene0,(255,255,255),pygame.Rect(30,h-70,staminaFill,40))
+            
+            staminaFill += 5
 
 # Game Loop
-while(1):
+while (1):
     key = pygame.key.get_pressed()
-    dt = clock.tick(30) / 1000
+    dt = clock.tick(40) / 1000
     
     for e in pygame.event.get():
         
@@ -39,6 +72,9 @@ while(1):
             if e.key == pygame.K_ESCAPE:
                 print(clock.get_fps())
                 sys.exit()
+            
+        if e.type == pygame.KEYUP:
+            cam.Jump(key)
         
     scene0.fill(BACKGROUND_COLOR)
     
@@ -96,6 +132,7 @@ while(1):
         try: pygame.draw.polygon(scene0, face_color[i], face_list[i],width=0)
         except: pass
     
+    Draw_GUI()
     pygame.draw.circle(scene0,(255,255,255),(w/2,h/2),5)
     pygame.display.flip()
     
