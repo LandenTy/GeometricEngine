@@ -119,7 +119,7 @@ Scenes are extremely useful for things like:
     
     - etc
 __________________________________________
-**Chapter 3 : 3D Models**
+**Chapter 3 : 3D Models** (DEPRECATED - UPDATED DOCS BEING WORKED ON)
 
 The Geometric Engine can currently support simple primitave objects such as Quads or Cubes.
 But there are expirimental classes being worked on to allow users to import their own 3D Models.
