@@ -100,7 +100,19 @@ while (1):
     cam.Reset(key)
 ```
 __________________________________________
-**Chapter 2 : Scenes**
+**CHAPTER 2 : Materials**
+
+Materials are used in the colors and/or texturing of objects. Applying images to your objects is still being worked on,
+but when it's finished we assume it'll look a little something like:
+
+```
+def apply_texture(self,src):
+```
+We estimate we'll use this function, and blit the texture onto the polygon scaling the image based on the player's rotation.
+This should (in theory) work because since the newest version of the TechSmart Image M-porter (TIM), the objects are applied to
+a _pygame.Surface([w,h])_ instance.
+__________________________________________
+**Chapter 3 : Scenes**
 
 Scenes, like in a play. Are a blank canvas, you can create new scenes by calling the `CreateScene` function within the Camera Class.
 
