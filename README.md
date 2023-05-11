@@ -15,7 +15,7 @@ _This Tutorial will help you get an insight on getting started with a project in
 Before we get started on learning how everything works, it's important you know what each individual thing is used for
 so you can increase your productivity throughout the Engine!
 
-       ~ Delta Time - A Timer that is called every frame to calculate the pos/rot/scale of objects in a scene
+       ~ Delta Time - Helps keep a consistant time frame, whilst updating the screen
        ~ Entities ~ Fancy way of saying an object
 
 **Chapter 1 : Camera Controller**
