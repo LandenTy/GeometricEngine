@@ -19,7 +19,7 @@ class Rock:
         pygame.draw.polygon(self.img,(211, 211, 211),[(236, 226), (238, 183), (22, 18)])
         pygame.draw.polygon(self.img,(220, 220, 220),[(22, 18), (192, 131), (236, 181)])
 
-class TEST1:
+class Testing:
     def __init__(self,bg_color,pos=(0,0)):
         self.pos = list(pos)
         self.img = pygame.Surface([125, 125])
