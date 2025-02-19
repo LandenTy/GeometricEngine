@@ -1,10 +1,26 @@
-![GeometricLogo](Images/GeometricEngineLogo.png)
+# Geometric Engine - 3D Engine Demo
 
-After many months of research, I've finally completed my 3D Engine! I'm now able to showcase a basic 3D Cube with layered-face ordering! Enjoy! I greatly thank all of the kind users on Stack Overflow (and the help of previously asked questions) to help aid me in getting to this point!
+Welcome to the **Geometric Engine**! After months of research and development, I’m thrilled to present the first version of my 3D engine. The engine currently supports a basic 3D Cube, featuring layered face ordering and a fully interactive camera system. This engine is a work-in-progress, but it already provides a great foundation for expanding to more complex 3D objects, scene management, and materials.
 
-Controls: WASD - Move Camera | Q - Fly Up | E - Fly Down | Mouse Cursor - Look Around | R - Reset Scene | Escape - End Demo
+Special thanks to all the amazing Stack Overflow users whose answers guided me during the development process!
 
-![Cube OBJ](Images/Cube.png)
+### Demo Features
+- **Camera Controls**: Move, Rotate, Fly (Up/Down)
+- **Reset Scene**: Instantly reset the scene
+- **Interactive Cube**: Showcase of a basic 3D cube with layered-face ordering
+
+### Controls
+- **WASD** - Move Camera
+- **Q** - Fly Up
+- **E** - Fly Down
+- **Mouse Cursor** - Look Around
+- **R** - Reset Scene
+- **Escape** - End Demo
+
+![Geometric Engine Logo](Images/GeometricEngineLogo.png)
+![3D Cube OBJ](Images/Cube.png)
+
+---
 
 **Hello! Welcome to the Geometric Engine!**
 
@@ -131,28 +147,3 @@ Scenes are extremely useful for things like:
     
     - etc
 __________________________________________
-**Chapter 3 : 3D Models** (DEPRECATED - UPDATED DOCS BEING WORKED ON)
-
-The Geometric Engine can currently support simple primitave objects such as Quads or Cubes.
-But there are expirimental classes being worked on to allow users to import their own 3D Models.
-
-A good example of this would be the `Imported_OBJ` class in _'Primitives.py'_.
-To import a 3D model:
-
-    - Create a '.txt' file in the TechSmart Project Hierarchy
-    
-    - Name it "Model_OBJ"
-    
-    - Find the OBJ model of your choice, and change the format from ".obj" to ".txt"
-    
-    - Drag the file, into a new chrome tab
-    
-    - Copy and Paste the Contents into the "Model_OBJ.txt" file in TechSmart
-    
-   **If your model was made in Blender**
-    
-    - Go to the very top of the pasted "Model_OBJ.txt" file in TechSmart
-    
-    - Delete the "_# Blender v2.92.0 OBJ File: 'your_blend_file_here'_"
-    
-    - You're now ready to import a 3D model!
